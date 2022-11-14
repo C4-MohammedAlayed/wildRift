@@ -1,0 +1,20 @@
+.main{
+   height:90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+.login{
+    border: 5px solid #111;
+    padding: 2rem;
+}
+.inLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.btndiv{
+    display: flex;;
+    justify-content: space-around;
+    width: 100%;
+}
