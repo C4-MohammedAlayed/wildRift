@@ -7,14 +7,21 @@ import { ContentComponent } from '../content.component';
 import { NavComponent } from '../../nav/nav.component';
 import { AppComponent } from 'src/app/app.component';
 import { LoginComponent } from '../../login/login.component';
+import { ChampionsComponent } from '../../champions/champions.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
-  declarations: [ ContentComponent,LoginComponent, NavComponent,AppComponent],
+  declarations: [ ContentComponent,LoginComponent, NavComponent,ChampionsComponent],
   imports: [
     CommonModule,
     ContantRoutingModule,
-    MaterialsModule
-  ]
+    MaterialsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+ 
 })
 export class ContantModule { }

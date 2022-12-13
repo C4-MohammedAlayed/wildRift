@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PostServiceService } from 'src/app/post-service.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 @Input()drawer!:any
-  constructor() { }
+PostNumber:any=0;
+  constructor(private postServiceService:PostServiceService) { }
 
   ngOnInit(): void {
+    this.postServiceService.subject.subscribe(subject =>{this.PostNumber=subject})
+    console.log("hi");
+    
   }
 toggle(): void {
   this.drawer.toggle();
