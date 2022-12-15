@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 sign(){
   this.Login=this.myForm.value
-  this.authService.login(this.Login).subscribe(res=>{
+  this.authService.login().subscribe(res=>{
    res=="token"?(this.router.navigate(["/Content"])):(null);
     
   })
