@@ -10,24 +10,25 @@ import { AuthService, login } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   hide:boolean =true;
-  Login!:login
+
   myForm!:FormGroup
   constructor(private authService:AuthService,private router: Router ) { }
 
   ngOnInit(): void {
     this.init()
   }
-sign(){
-  this.Login=this.myForm.value
-  this.authService.login().subscribe(res=>{
-   res=="token"?(this.router.navigate(["/Content"])):(null);
-    
+ sign(){
+  let {email,password} = this.myForm.value
+  this.authService.login(email,password).subscribe(res=>{
+    this.router.navigate(["/Content"]);
   })
+  
 }
 init(){
   this.myForm = new FormGroup({
     email:new FormControl(""),
     password:new FormControl("")
   })
+  
 } 
 }

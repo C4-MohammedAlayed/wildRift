@@ -7,20 +7,21 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  state:boolean | undefined 
-  constructor( private authService:AuthService,private router: Router){
+  state:any =false 
+  token:string|null=null
+  constructor( private authService:AuthService,private router: Router
+    ){
 
   }
 
   canActivate(
 ): Observable<boolean> | boolean  {
-  console.log("what");
-  
-  this.authService.login().subscribe(res=>{
-    res == "token"?( this.state=true):(this.state=false)
+  this.token= localStorage.getItem('token');
+  this.authService.isLoggedIn$.subscribe(res=>{
+   this.state=res
   })
-  if (this.state) {
-    console.log("hu");
+  if (this.state || this.token) {
+    console.log(this.token,this.state);
     
     return true;
   }else{

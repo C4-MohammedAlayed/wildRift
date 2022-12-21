@@ -1,12 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+
 
 const Url = environment.Url
 
@@ -17,21 +15,25 @@ const Url = environment.Url
 // create login with real loggedin and token 
 export class AuthService {
 
-   token = of("token");
+  
   constructor( private http:HttpClient) { }
-    httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  isLoggedIn$ = new Subject();
     
-  };
-  // login(login:login):Observable<Object>{
-  //   // return this.http.post(`${Url}User/Login`,{login},httpOptions)
-  //   return this.token
-  // }
-  login():Observable<Object>{
-    // return this.http.post(`${Url}User/Login`,{login},httpOptions)
-    return this.token
+  login(email:string,password:string):Observable<any>{
+    console.log("hi");
+    
+    return this.http.post(`${Url}login`,{email,password}).pipe(map(res=>{
+      localStorage.setItem('token', JSON.stringify(res));
+      this.isloggedin(true)
+      return res;
+    }))
+  }
+  
+  isloggedin(state:boolean){
+  this.isLoggedIn$.next(state)
   }
 }
+
 export interface login {
 password:string,
 email:string
