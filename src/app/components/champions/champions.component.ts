@@ -10,6 +10,7 @@ import { PostServiceService } from 'src/app/post-service.service';
 export class ChampionsComponent implements OnInit {
   posts!: any[];
   show:boolean=false
+  name:any
   constructor(private postServiceService: PostServiceService) {}
 
   ngOnInit(): void {
@@ -29,5 +30,22 @@ export class ChampionsComponent implements OnInit {
     });
   }
  
- 
+
+  // this is used to wait the user from typing in input
+  myDebounes(cb:Function,d:number){
+    let timer: string | number | NodeJS.Timeout | undefined;
+     return function(...args: any){
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(()=>{
+    cb(...args)
+      },d)
+     }
+    
+     }
+      showMe(){
+        this.showMe= 
+        this.myDebounes(()=>{
+          console.log(this.name);
+        },500)
+      }
 }

@@ -9,7 +9,7 @@ import { AppComponent } from 'src/app/app.component';
 import { LoginComponent } from '../../login/login.component';
 import { ChampionsComponent } from '../../champions/champions.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContantRoutingModule,
     MaterialsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
+
   ],
  
 })

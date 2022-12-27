@@ -13,6 +13,8 @@ PostNumber:any=0;
 
   ngOnInit(): void {
     this.postServiceService.subject.subscribe(subject =>{this.PostNumber=subject})
+ 
+    
     console.log("hi");
     
   }
