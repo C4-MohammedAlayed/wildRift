@@ -10,20 +10,23 @@ import { LoginComponent } from '../../login/login.component';
 import { ChampionsComponent } from '../../champions/champions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChampionModule } from "../../champions/champion/champion.module";
+import { ToComponent } from '../../champions/champion/to/to.component';
+
 
 
 
 @NgModule({
-  declarations: [ ContentComponent,LoginComponent, NavComponent,ChampionsComponent],
-  imports: [
-    CommonModule,
-    ContantRoutingModule,
-    MaterialsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
-
-  ],
- 
+    declarations: [ToComponent,ContentComponent, LoginComponent, NavComponent, ChampionsComponent],
+    imports: [
+        CommonModule,
+        ContantRoutingModule,
+        MaterialsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+       
+      
+    ]
 })
 export class ContantModule { }

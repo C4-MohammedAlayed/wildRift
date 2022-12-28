@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { subscribeOn } from 'rxjs';
+import { of, subscribeOn } from 'rxjs';
 import { PostServiceService } from 'src/app/post-service.service';
+import { ToDoService } from 'src/app/services/to-do.service';
+import { TodoInterface } from './champion/to/to.component';
 
 @Component({
   selector: 'app-champions',
@@ -11,9 +13,21 @@ export class ChampionsComponent implements OnInit {
   posts!: any[];
   show:boolean=false
   name:any
-  constructor(private postServiceService: PostServiceService) {}
+  constructor(private postServiceService: PostServiceService, private toDoService:ToDoService) {}
 
+  todos:TodoInterface[]=[{
+    id: 0,
+    tasks: 'write',
+    active: false
+  },
+  { id: 1,
+    tasks: 'home',
+    active: false}
+]
+// convert it to observable
+// toDos$=of(this.toDo)
   ngOnInit(): void {
+    this.toDoService.todoFromSubject$.next(this.todos)
     this.getPosts();
   }
   getPosts() {
@@ -48,4 +62,18 @@ export class ChampionsComponent implements OnInit {
           console.log(this.name);
         },500)
       }
+      change(event:any){
+        console.log(event.value);
+        
+      }
+      addTodo(){
+        this.todos.push( { id: 15,
+          tasks: 'home',
+          active: false})
+          this.toDoService.todoFromSubject$.next(this.todos)
+          console.log(this.todos);
+
+      }
+   
+      
 }

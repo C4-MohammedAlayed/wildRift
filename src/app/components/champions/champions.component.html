@@ -1,10 +1,21 @@
 <div class=" container ">
-    
     <mat-form-field appearance="fill">
         <mat-label>Fill form field</mat-label>
         <input (keyup)="showMe()" [(ngModel)]="name" matInput placeholder="Placeholder">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
-
 </div>
+<!-- <app-to *ngFor="let todo of todos" [todo]="todo"></app-to> -->
+<!-- to check the service -->
+<app-to ></app-to>
+<!-- to test how many rener the child component -->
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Fill form field</mat-label>
+        <input (keyup)="change($event.target)" matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+</div>
+<div> <button mat-raised-button color="primary" (click)="addTodo()">Primary</button></div>
